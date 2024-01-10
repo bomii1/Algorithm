@@ -1,6 +1,6 @@
 import sys
 
-class Stack:
+class Queue:
     def __init__(self):
         self.items = []
 
@@ -33,21 +33,21 @@ class Stack:
     def size(self):
         print(len(self.items))
 
-s = Stack()
+q = Queue()
 
 n = int(sys.stdin.readline())
 stackList = [sys.stdin.readline().strip() for i in range(n)]
 
 for i in range(n):
     if stackList[i][1] == 'u': # push
-        s.push(stackList[i][5:])
+        q.push(stackList[i][5:])
     elif stackList[i][0] == 'p' and stackList[i][1] == 'o': # pop
-        s.pop()
+        q.pop()
     elif stackList[i][0] == 'f': # front
-        s.front()
+        q.front()
     elif stackList[i][0] == 'b': # back
-        s.back()
+        q.back()
     elif stackList[i][0] == 's': # size
-        s.size()
+        q.size()
     elif stackList[i][0] == 'e': # empty
-        s.empty()
+        q.empty()
