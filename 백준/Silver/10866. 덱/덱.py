@@ -51,22 +51,23 @@ class Deque:
 d = Deque()
 
 n = int(sys.stdin.readline())
-DequeList = [sys.stdin.readline().strip() for i in range(n)]
 
-for i in range(n):
-    if DequeList[i][1] == 'u' and DequeList[i][5] == 'f':
-        d.push_front(DequeList[i][11:])
-    elif DequeList[i][1] == 'u' and DequeList[i][5] == 'b':
-        d.push_back(DequeList[i][10:])
-    elif DequeList[i][1] == 'o' and DequeList[i][4] == 'f':
+for _ in range(n):
+    cmd = sys.stdin.readline().split()
+
+    if cmd[0] == 'push_front':
+        d.push_front(int(cmd[1]))
+    elif cmd[0] == 'push_back':
+        d.push_back(int(cmd[1]))
+    elif cmd[0] == 'pop_front':
         d.pop_front()
-    elif DequeList[i][1] == 'o' and DequeList[i][4] == 'b':
+    elif cmd[0] == 'pop_back':
         d.pop_back()
-    elif DequeList[i][0] == 'f':
-        d.front()
-    elif DequeList[i][0] == 'b':
-        d.back()
-    elif DequeList[i][0] == 'e':
-        d.empty()
-    elif DequeList[i][0] == 's':
+    elif cmd[0] == 'size':
         d.size()
+    elif cmd[0] == 'empty':
+        d.empty()
+    elif cmd[0] == 'front':
+        d.front()
+    elif cmd[0] == 'back':
+        d.back()
