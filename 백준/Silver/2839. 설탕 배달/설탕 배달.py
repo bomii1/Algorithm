@@ -2,7 +2,7 @@ n = int(input())
 
 dp = [-1] * (n+1)
 
-if len(dp) >= 6:
+if n >= 5:
     dp[5] = 1
 dp[3] = 1
 
