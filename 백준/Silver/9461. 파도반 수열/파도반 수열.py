@@ -1,18 +1,12 @@
 import sys
 input = sys.stdin.readline
 def dp(N):
-    dp = [0] * 101
-    dp[1] = 1
-    dp[2] = 1
-    dp[3] = 1
-    dp[4] = 2
-    dp[5] = 2
-
+    dp = [0, 1, 1, 1, 2, 2]
+    
     if N <= 5:
         return dp[N]
-
     for j in range(6, N+1):
-        dp[j] = dp[j-1] + dp[j-5]
+        dp.append(dp[j-1] + dp[j-5])
     return dp[N]
 
 T = int(input())
