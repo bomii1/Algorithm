@@ -1,35 +1,39 @@
-from collections import deque
 import sys
+from collections import deque
+
 input = sys.stdin.readline
 
-def dfs(v):
-    visited1[v] = 1
-    print(v, end=' ')
-    for i in range(1, N+1):
-        if graph[v][i] == 1 and visited1[i] == 0:
-            dfs(i)
+def dfs(n):
+    visited1[n] = 1
+    print(n, end=' ')
+    for v in graph[n]:
+        if visited1[v] == 0:
+            dfs(v)
 
-def bfs(v):
+def bfs(n):
     queue = deque()
-    queue.append(v)
-    visited2[v] = 1
+    queue.append(n)
+    visited2[n] = 1  # 시작 노드 방문 체크
 
     while queue:
         x = queue.popleft()
         print(x, end=' ')
 
-        for j in range(1, N+1):
-            if graph[x][j] == 1 and visited2[j] == 0:
-                visited2[j] = 1
-                queue.append(j)
+        for v in graph[x]:
+            if visited2[v] == 0:
+                visited2[v] = 1
+                queue.append(v)
 
 N, M, V = map(int, input().split())
-graph = [[0] * (N+1) for _ in range(N+1)]
+graph = {i: [] for i in range(1, N+1)}
 
-for i in range(M):
+for _ in range(M):
     a, b = map(int, input().split())
-    graph[a][b] = 1
-    graph[b][a] = 1
+    graph[a].append(b)
+    graph[b].append(a)
+
+for y in graph:
+    graph[y].sort()
 
 visited1 = [0] * (N+1)
 visited2 = [0] * (N+1)
