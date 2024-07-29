@@ -32,4 +32,4 @@ for i in range(N):
         else:
             print(0)
     else:
-        Q.append(int(command[4:]))
+        Q.append(int(command[5:]))
