@@ -10,11 +10,9 @@ C = deque(map(int, input().split()))
 
 inputArr = C
 for i in range(N):
-    if A[i] == 0: # 큐
-        #d = deque()
+    if A[i] == 0:
         inputArr.appendleft(B[i])
         inputArr.pop()
-
 
 for i in range(len(inputArr)):
     print(inputArr[i], end = ' ')
